@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "com.lonkachu.mixin.client",
+	"compatibilityLevel": "JAVA_17",
+	"client": [
+      "ItemSettingsMixinClient",
+		"ServerPlayNetworkDesyncFixMixin"
+
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
