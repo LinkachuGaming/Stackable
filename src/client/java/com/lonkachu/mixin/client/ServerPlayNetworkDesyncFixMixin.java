@@ -1,9 +1,11 @@
 package com.lonkachu.mixin.client;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.ClientConnection;
+import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ServerPlayPacketListener;
 import net.minecraft.network.listener.TickablePacketListener;
-import net.minecraft.network.packet.Packet;
+//import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.*;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -48,6 +50,7 @@ public class ServerPlayNetworkDesyncFixMixin implements EntityTrackingListener, 
 
     }
 
+
     @Shadow
     public void tick() {
 
@@ -59,9 +62,10 @@ public class ServerPlayNetworkDesyncFixMixin implements EntityTrackingListener, 
     }
 
     @Shadow
-    public boolean isConnectionOpen() {
-        return false;
+    public ClientConnection getConnection() {
+        return null;
     }
+
 
     @Shadow
     public void onHandSwing(HandSwingC2SPacket packet) {
@@ -75,6 +79,11 @@ public class ServerPlayNetworkDesyncFixMixin implements EntityTrackingListener, 
 
     @Shadow
     public void onCommandExecution(CommandExecutionC2SPacket packet) {
+
+    }
+
+    @Shadow
+    public void onRequestChatPreview(RequestChatPreviewC2SPacket packet) {
 
     }
 
@@ -298,8 +307,5 @@ public class ServerPlayNetworkDesyncFixMixin implements EntityTrackingListener, 
 
     }
 
-    @Shadow
-    public void onPlayerSession(PlayerSessionC2SPacket packet) {
 
-    }
 }
