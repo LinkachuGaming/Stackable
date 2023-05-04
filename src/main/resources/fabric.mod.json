@@ -3,13 +3,13 @@
 	"id": "stackable",
 	"version": "${version}",
 	"name": "Stackable",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "# Stackable\n\nStackable is a mod that increases all block stacking limits to any value less than 127 for minecraft 1.19.4.",
 	"authors": [
-		"Me!"
+		"Lonkachu"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+		"sources": "https://github.com/LinkachuGaming/Stackable"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/stackable/icon.png",
