@@ -16,7 +16,7 @@ public abstract class ItemSettingsMixin {
 	@Inject(at = @At("TAIL"), method = "<init>")
 	private void init(CallbackInfo ci) {
 
-		this.maxCount = 127;
+		this.maxCount = StackableMod.getMaxStackCount();
 
 	}
 
