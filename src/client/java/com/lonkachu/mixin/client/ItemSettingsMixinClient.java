@@ -16,7 +16,7 @@ public abstract class ItemSettingsMixinClient {
     @Inject(at = @At("TAIL"), method = "<init>")
     private void init(CallbackInfo ci) {
         // This code is injected into the start of MinecraftServer.loadWorld()V
-        this.maxCount = 127;
+        this.maxCount = StackableMod.getMaxStackCount();
         //ExampleMod.LOGGER.info("Hello Mixin world!");
     }
 

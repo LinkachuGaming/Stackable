@@ -17,11 +17,11 @@ public interface InventoryStackMixin extends Clearable {
      */
     @Overwrite
     default int getMaxCountPerStack() {
-        return 127;
+        return StackableMod.getMaxStackCount();
     }
 
     @Shadow
-    int MAX_COUNT_PER_STACK = 127;
+    int MAX_COUNT_PER_STACK = StackableMod.getMaxStackCount();
 
 
 }
