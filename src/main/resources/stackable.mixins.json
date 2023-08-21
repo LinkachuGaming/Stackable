@@ -5,7 +5,8 @@
 	"mixins": [
 		"ItemSettingsMixin",
       "InventoryStackMixin",
-		"ServerPlayNetworkDesyncFixMixin"
+		"ServerPlayNetworkDesyncFixMixin",
+		"BundleItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
