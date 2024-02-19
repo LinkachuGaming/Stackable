@@ -4,9 +4,10 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"ItemSettingsMixin",
-      "InventoryStackMixin",
+      	"InventoryStackMixin",
 		"ServerPlayNetworkDesyncFixMixin",
-		"BundleItemMixin"
+		"BundleItemMixin",
+		"ItemEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
