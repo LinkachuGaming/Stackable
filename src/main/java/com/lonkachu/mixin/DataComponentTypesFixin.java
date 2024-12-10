@@ -27,7 +27,7 @@ public class DataComponentTypesFixin {
             )
     private static Codec<Integer> replaceCodec(Codec<Integer> original)
     {
-        return Codec.intRange(0, StackableMod.getMaxStackCount());
+        return Codec.intRange(0, StackableMod.MAX_STACK);
     }
 //private static final ComponentMap DEFAULT_ITEM_COMPONENTS = ComponentMap.builder().add(MAX_STACK_SIZE, StackableMod.getMaxStackCount()).add(LORE, LoreComponent.DEFAULT).add(ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT).add(REPAIR_COST, 0).add(ATTRIBUTE_MODIFIERS, AttributeModifiersComponent.DEFAULT).add(RARITY, Rarity.COMMON).build();
 }

@@ -26,6 +26,6 @@ public class ItemStackFixin {
             )
     private static Codec<Integer> replaceCodec(Codec<Integer> original)
     {
-        return Codec.intRange(0, StackableMod.getMaxStackCount());
+        return Codec.intRange(0, StackableMod.MAX_STACK);
     }
 }
