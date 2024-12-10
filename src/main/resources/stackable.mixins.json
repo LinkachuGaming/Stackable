@@ -7,7 +7,8 @@
 		"DataComponentTypesFixin",
 		"InventoryStackMixin",
 		"ItemEntityMixin",
-		"ItemStackFixin"
+		"ItemStackFixin",
+		"ToolTipMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
