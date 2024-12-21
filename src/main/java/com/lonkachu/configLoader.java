@@ -27,7 +27,7 @@ public class configLoader {
 
     private static Config configWriter() throws IOException {
         GsonBuilder b = new GsonBuilder();
-        Gson gson = b.create();
+        Gson gson = b.setPrettyPrinting().create();
         //gson.fieldNamingStrategy();
         FileWriter writer = new FileWriter("config/Stackable.json");
 

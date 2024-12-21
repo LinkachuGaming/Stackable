@@ -63,16 +63,6 @@ public class StackableMod implements ModInitializer {
                     }
             );
         }
-
-
-
-//        ItemEnchantmentsComponent.MODIFY.register(context ->
-//        {
-//            context.modify(Items.DIAMOND_PICKAXE, builder ->
-//            {
-//                builder.set
-//            });
-//        });
     }
 
     public static int getMaxStackCount()
