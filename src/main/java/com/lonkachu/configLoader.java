@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 
 import java.io.*;
 import java.net.FileNameMap;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /*
 Auth Lonk: So, this is a pretty basic GSON configuration file java file, it pretty much attempts to read stackable.json, if it doesn't exist it creates stackable and sends it to the call that called this config
@@ -28,9 +30,12 @@ public class configLoader {
     private static Config configWriter() throws IOException {
         GsonBuilder b = new GsonBuilder();
         Gson gson = b.setPrettyPrinting().create();
-        //gson.fieldNamingStrategy();
-        FileWriter writer = new FileWriter("config/Stackable.json");
 
+        if(Files.notExists(Path.of("config")))
+        {
+            Files.createDirectory(Path.of("config"));
+        }
+        FileWriter writer = new FileWriter("config/Stackable.json");
         //int maxStack = StackableMod.MAX_STACK;
         Config config = new Config(StackableMod.DEFAULT_STACK);
 
