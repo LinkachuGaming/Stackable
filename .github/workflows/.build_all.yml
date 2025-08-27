@@ -43,7 +43,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          release_name: Stackable $ {{ github.ref }}
+          tag_name: ${{ github.ref_name }} # Uses the pushed tag name
+          name: Stackable ${{ github.ref_name }}
           files: |
             fabric/build/libs/
             forge/build/libs/
