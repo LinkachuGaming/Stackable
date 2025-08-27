@@ -38,6 +38,20 @@ jobs:
         with:
           name: Neoforge
           path: neoforge/build/libs/
+      - name: Get Stackable Version
+        uses: madhead/read-java-properties@latest
+        id: version
+        with: 
+          file: gradle.properties
+          property: version
+          default: 0.0.1
+      - name: Get Minecraft Version
+        uses: madhead/read-java-properties@latest
+        id: mc_version
+        with: 
+          file: gradle.properties
+          property: minecraft_version
+          default: 1.0.0
       - name: Create Release
         uses: softprops/action-gh-release@v1
         env:
@@ -46,6 +60,6 @@ jobs:
           tag_name: ${{ github.ref_name }} # Uses the pushed tag name
           name: Stackable ${{ github.ref_name }}
           files: |
-            fabric/build/libs/
-            forge/build/libs/
-            neoforge/build/libs/
+            fabric/build/libs/stackable-fabric-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar #mc_version should be the MC version and version should be our version
+            forge/build/libs/stackable-forge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
+            neoforge/build/libs/stackable-neoforge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
