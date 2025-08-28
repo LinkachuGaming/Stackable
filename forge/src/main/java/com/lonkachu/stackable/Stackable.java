@@ -4,9 +4,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.GatherComponentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -22,17 +20,15 @@ public class Stackable {
         // project.
 
         // Use Forge to bootstrap the Common mod.
-        Constants.LOG.info("Hello Forge world!");
         StackableMod.init();
 
-
-        IEventBus bus = MinecraftForge.EVENT_BUS;
-        bus.addListener(this::RegistryEvent);
+        var modBus = ctx.getModBusGroup();
+        GatherComponentsEvent.Item.BUS.addListener(this::RegistryEvent);
     }
+
     public void RegistryEvent(GatherComponentsEvent.Item event)
     {
         Item i = event.getOwner();
-        StackableMod.LOGGER.info("FIRE!!!");
 
         for (StacksizeOverride override : StackableMod.GetConfig().GetOverrides())
         {
