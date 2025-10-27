@@ -3,10 +3,10 @@
   "minVersion": "0.8",
   "package": "com.lonkachu.stackable.mixin",
   "compatibilityLevel": "JAVA_18",
-  "mixins": [],
-  "client": [
+  "mixins": [
     "InventoryStackMixinFallback"
   ],
+  "client": [],
   "server": [],
   "injectors": {
     "defaultRequire": 1
