@@ -21,12 +21,12 @@ public class DrawContextFixin
     @Final
     private MatrixStack matrices;
 
+    //code inspired by stacc https://github.com/Ueaj-Kerman/Stacc/blob/master/src/main/java/net/devtech/stacc/mixin/RenderItemCountFixin.java
     @Redirect(method = "drawItemInSlot(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V",
             at = @At (value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;getWidth(Ljava/lang/String;)I"))
     private int width(TextRenderer renderer, String text) {
         return (int) (renderer.getWidth(text) * NumberUtils.getScale(text));
     }
-
 
     @Inject(method = "drawItemInSlot(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V",
             at = @At (value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;translate(FFF)V", shift = At.Shift.AFTER),
