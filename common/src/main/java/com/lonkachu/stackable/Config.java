@@ -5,9 +5,12 @@ import java.util.ArrayList;
 public class Config {
 
     private int maxStack;
+
+    private boolean disableTruncateItemCount;
     private ArrayList<StacksizeOverride> StacksizeOverride = new ArrayList<StacksizeOverride>();
     public Config(int maxCount) {
         maxStack = maxCount;
+        disableTruncateItemCount = false;
         StacksizeOverride.add(new StacksizeOverride("minecraft:egg", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:brown_egg", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:blue_egg", maxCount / 4));
@@ -60,6 +63,10 @@ public class Config {
 
     public int getMaxStackSize() {
         return maxStack;
+    }
+    public boolean CanTruncateItemCount()
+    {
+        return !disableTruncateItemCount;
     }
     public ArrayList<StacksizeOverride> GetOverrides() { return StacksizeOverride; }
 }
