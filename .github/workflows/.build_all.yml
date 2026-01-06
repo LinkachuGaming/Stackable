@@ -80,6 +80,11 @@ jobs:
             forge
             neoforge
 
+          files: |
+            fabric/build/libs/stackable-fabric-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
+            forge/build/libs/Stackable-forge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
+            neoforge/build/libs/stackable-neoforge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
+
           game-versions: |
             [${{ steps.mc_version.outputs.value }})
 
