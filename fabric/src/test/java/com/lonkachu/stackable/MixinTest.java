@@ -39,12 +39,12 @@ public class MixinTest
     @Test
     public void TestMerge()
     {
-        ItemStack hundredBrick = new ItemStack(Items.BRICK, 100);
-        ItemStack twoHundredBrick = new ItemStack(Items.BRICK, 200);
+        ItemStack thousandBrick = new ItemStack(Items.BRICK, 1000);
+        ItemStack twothousandBrick = new ItemStack(Items.BRICK, 2000);
 
-        ItemStack item = ItemEntity.merge(hundredBrick, twoHundredBrick, 300);
+        ItemStack item = ItemEntity.merge(thousandBrick, twothousandBrick, 3000);
 
-        Assertions.assertEquals(128, item.getCount());
+        Assertions.assertEquals(StackableMod.DEFAULT_STACK, item.getCount());
     }
 
     @Test
