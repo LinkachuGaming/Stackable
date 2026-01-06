@@ -7,7 +7,7 @@ public class Config {
     private int maxStack;
 
     private boolean disableTruncateItemCount;
-    private ArrayList<StacksizeOverride> StacksizeOverride = new ArrayList<StacksizeOverride>();
+    private ArrayList<StacksizeOverride> StacksizeOverride = new ArrayList<>();
     public Config(int maxCount) {
         maxStack = maxCount;
         disableTruncateItemCount = false;

@@ -18,7 +18,7 @@ public class StackableMod {
     public static final Logger LOGGER = LoggerFactory.getLogger("stackable");
 
     public static final int MAX_STACK = 2147483647;
-    public static final int DEFAULT_STACK = 128;
+    public static final int DEFAULT_STACK = 1024;
 
     private static int maxStack = -1;
 
