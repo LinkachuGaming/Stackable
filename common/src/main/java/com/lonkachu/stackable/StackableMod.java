@@ -1,8 +1,5 @@
 package com.lonkachu.stackable;
 
-import com.lonkachu.stackable.platform.Services;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.Items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +16,8 @@ public class StackableMod {
 
     public static final int MAX_STACK = 2147483647;
     public static final int DEFAULT_STACK = 1024;
+
+    public static final String[] SUFFIXES = { "", "K", "M", "B" };
 
     private static int maxStack = -1;
 

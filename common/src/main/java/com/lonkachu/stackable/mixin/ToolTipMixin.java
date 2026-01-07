@@ -1,5 +1,6 @@
 package com.lonkachu.stackable.mixin;
 
+import com.lonkachu.stackable.StackableMod;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +26,7 @@ public abstract class ToolTipMixin {
      */
     @Inject(method = "getTooltipLines", at = @At("RETURN"))
     private void addOverflowTooltip(Item.TooltipContext tooltipContext, Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
-        if (this.getCount() > 999) {
+        if (this.getCount() > 999 && StackableMod.GetConfig().CanTruncateItemCount()) {
             List<Component> texts = cir.getReturnValue();
             texts.add(1, Component.literal(String.valueOf(this.getCount())).withStyle(ChatFormatting.GRAY));
         }

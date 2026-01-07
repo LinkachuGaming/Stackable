@@ -25,8 +25,6 @@ public class DrawContextFixin
      * I do want to at some point replace this with auto resizing text, maybe for next rewrite.
      * ModifyVariable is the best bet for this section as this method just so happens to include a string that is only used if the block text is not overwriten, extremely convienent
      */
-    @Unique
-    private final String[] suffixes = { "", "K", "M", "B" };
 
     @ModifyVariable(method = "renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private String modifyString(String value, Font textRenderer, ItemStack stack, int x, int y, @Nullable String countOverride)
@@ -40,7 +38,7 @@ public class DrawContextFixin
         {
             int suffix = (int)Math.log10(count) / 3;
             count /= (int) Math.pow(1000, suffix);
-            return count + suffixes[suffix];
+            return count + StackableMod.SUFFIXES[suffix];
         }
         else
         {
