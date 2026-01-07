@@ -83,7 +83,7 @@ jobs:
             fabric/build/libs/stackable-fabric-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
 
           game-versions: |
-            [${{ steps.mc_version.outputs.value }})
+            [${{ steps.mc_version.outputs.value }},)
 
           dependencies:
             fabric@${{ steps.fabric_version }}(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
@@ -108,7 +108,7 @@ jobs:
             neoforge/build/libs/stackable-neoforge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
 
           game-versions: |
-            [${{ steps.mc_version.outputs.value }})
+            [${{ steps.mc_version.outputs.value }},)
 
           changelog-file: CHANGELOG.md
 
@@ -130,7 +130,7 @@ jobs:
             forge/build/libs/Stackable-forge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
 
           game-versions: |
-            [${{ steps.mc_version.outputs.value }})
+            [${{ steps.mc_version.outputs.value }},)
 
           dependencies:
             fabric@${{ steps.fabric_version }}(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
@@ -156,7 +156,7 @@ jobs:
             forge/build/libs/Stackable-forge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
 
           game-versions: |
-            [${{ steps.mc_version.outputs.value }})
+            [${{ steps.mc_version.outputs.value }},)
 
           dependencies:
             fabric@${{ steps.fabric_version }}(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
