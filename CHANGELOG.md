@@ -1,6 +1,16 @@
 # Welcome to Stackable 2.0.3!
 
-A Quick Second release of 2.0.3; my autobuild wasn't quite working last time.
+Who would've guessed, a 1.21.1 backport. Considering minecraft's new update strategy, and the many changes to my dev pipeline
+since 1.21 making supporting more versions practical; I decided to finally push an update for my 1.21.1 and bring the entire new
+featureset from my latest builds.
+
+Since 1.3:
+
++ Multiplayer fixes
++ Stacksizes properly merge 
++ Several rewrites which should improve stability,
+
+2.0.3 Changes:
 
 + Items stacks over 999 will now display without being rounded.
 + Item stacks will scale down as more digits are added

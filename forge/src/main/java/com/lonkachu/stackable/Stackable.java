@@ -5,6 +5,8 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.GatherComponentsEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -22,17 +24,17 @@ public class Stackable {
         // Use Forge to bootstrap the Common mod.
         StackableMod.init();
 
-        var modBus = ctx.getModBusGroup();
-        GatherComponentsEvent.Item.BUS.addListener(this::RegistryEvent);
+        var modBus = ctx.getModEventBus();
+//        GatherComponentsEvent.Item.addListener(this::RegistryEvent);
     }
-
-    public void RegistryEvent(GatherComponentsEvent.Item event)
+    @SubscribeEvent
+    public static void RegistryEvent(GatherComponentsEvent.Item event)
     {
         Item i = event.getOwner();
 
         for (StacksizeOverride override : StackableMod.GetConfig().GetOverrides())
         {
-            Optional<Holder.Reference<Item>> optional = BuiltInRegistries.ITEM.get(override.GetIdentifier());
+            Optional<Holder.Reference<Item>> optional = BuiltInRegistries.ITEM.getHolder(override.GetIdentifier());
 
             if (optional.isEmpty())
             {

@@ -12,7 +12,8 @@
     "ToolTipMixin"
   ],
   "client": [
-    "DrawContextFixin"
+    "DrawContextFixin",
+    "BundleItemFixin"
   ],
   "server": [],
   "injectors": {
