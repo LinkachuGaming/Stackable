@@ -2,6 +2,7 @@ package com.lonkachu.stackable.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.lonkachu.stackable.StackableMod;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiGraphics.class)
 public class DrawContextFixin
 {
-    @Shadow @Final private Matrix3x2fStack pose;
+    @Shadow @Final private PoseStack pose;
 
     /**
      * author Lonkachu
@@ -56,13 +57,13 @@ public class DrawContextFixin
 
         return 2.5f / s.length();
     }
-    @Redirect(method = "renderItemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;width(Ljava/lang/String;)I"))
+    @Redirect(method = "renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;width(Ljava/lang/String;)I"))
     private int width(Font instance, String s)
     {
         float f = scale(s);
         return (int)(instance.width(s) * f);
     }
-    @Inject(method = "renderItemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)V") )
+    @Inject(method = "renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)I" ))
     private void width(Font font, ItemStack stack, int x, int y, String text, CallbackInfo ci, @Local(ordinal = 1) String s)
     {
         if (s == null)
@@ -70,7 +71,8 @@ public class DrawContextFixin
             return;
         }
         float f = scale(s);
-        this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16);
-        this.pose.scale(f);
+        this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16, 0);
+        //this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16,0);
+        this.pose.scale(f, f, f);
     }
 }

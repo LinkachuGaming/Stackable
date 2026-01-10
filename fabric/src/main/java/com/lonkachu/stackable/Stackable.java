@@ -25,7 +25,7 @@ public class Stackable implements ModInitializer {
         StackableMod.init();
 
         for(StacksizeOverride override : StackableMod.GetConfig().GetOverrides()) {
-            Optional<Holder.Reference<Item>> optionalitem = BuiltInRegistries.ITEM.get(override.GetIdentifier());
+            Optional<Holder.Reference<Item>> optionalitem = BuiltInRegistries.ITEM.getHolder(override.GetIdentifier());
 
             if (optionalitem.isEmpty())
             {

@@ -42,7 +42,7 @@ public class Stackable {
         {
             try
             {
-                Item item = BuiltInRegistries.ITEM.get(override.GetIdentifier()).orElseThrow().value();
+                Item item = BuiltInRegistries.ITEM.get(override.GetIdentifier());
                 event.modify(item, builder -> builder.set(DataComponents.MAX_STACK_SIZE, override.GetCount()));
             } catch (NoSuchElementException e)
             {

@@ -20,7 +20,7 @@ public class ItemStackFixin {
     //1.2.2 - This is a lot cleaner and less crash prone. This was done to fix an issue with kubeJS, it might be worth making a PR for them since this should achieve the same effect and prevent other mods from crashing.
     @ModifyExpressionValue
             (
-                    method = "lambda$static$1(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;", //This method is a Lambda, they aren't funda.
+                    method = "lambda$static$3(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;", //This method is a Lambda, they aren't funda.
                     at = @At(value = "INVOKE", target = "Lnet/minecraft/util/ExtraCodecs;intRange(II)Lcom/mojang/serialization/Codec;")
             )
     private static Codec<Integer> replaceCodec(Codec<Integer> original)
