@@ -64,12 +64,9 @@ public class DrawContextFixin
         return (int)(instance.width(s) * f);
     }
     @Inject(method = "renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)I" ))
-    private void width(Font font, ItemStack stack, int x, int y, String text, CallbackInfo ci, @Local(ordinal = 1) String s)
+    private void width(Font font, ItemStack stack, int x, int y, String text, CallbackInfo ci)
     {
-        if (s == null)
-        {
-            return;
-        }
+        String s = text == null ? String.valueOf(stack.getCount()) : text;
         float f = scale(s);
         this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16, 0);
         //this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16,0);
