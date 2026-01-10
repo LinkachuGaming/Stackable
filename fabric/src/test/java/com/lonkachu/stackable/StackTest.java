@@ -23,8 +23,7 @@ public class StackTest {
         StacksizeOverride override = new StacksizeOverride("minecraft:dirt", 999);
 
         Block expected = Blocks.DIRT;
-        Block actual = BuiltInRegistries.BLOCK.get(override.GetIdentifier()).get().value();
-
-        Assertions.assertNotSame(BuiltInRegistries.BLOCK.get(override.GetIdentifier()).get().value().toString(), Blocks.DIRT.toString());
+        Block actual = BuiltInRegistries.BLOCK.get(override.GetIdentifier());
+        Assertions.assertNotSame(BuiltInRegistries.BLOCK.get(override.GetIdentifier()).toString(), Blocks.DIRT.toString());
     }
 }
