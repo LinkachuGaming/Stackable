@@ -49,6 +49,13 @@ jobs:
       - name: build
         run: ./gradlew build
 
+      - name: build jarJar so forge doesn't break
+        run: ./gradlew jarJar
+      - name: cleanup Forge bin
+        run: |
+          rm forge/build/libs/Stackable-forge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
+          mv forge/build/libs/Stackable-forge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}-all.jar forge/build/libs/Stackable-forge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
+
       - name: Save Fabric artifacts
         uses: actions/upload-artifact@v4
         with:
