@@ -1,5 +1,6 @@
-# Stackable 2.0.4!
+# Stackable 2.0.5!
 
-A quick hotfix for 2.0.3, mostly solving some compatibility issues.
+Hotfixes!
 
-+ A fix for forge crashing on Startup.
+- Fixed a crash that would occur on startup in 1.21.11 servers.
+- Removed the accidental debug Hello world that was leftover only in Fabric and Neoforge.
