@@ -1,7 +1,7 @@
 package com.lonkachu.stackable.mixin;
 
-import com.lonkachu.stackable.StackableMod;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.lonkachu.stackable.StackableMod;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;

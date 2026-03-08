@@ -5,6 +5,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 
@@ -21,10 +22,9 @@ public class Stackable {
 
         // Use NeoForge to bootstrap the Common mod.
         StackableMod.init();
-
-        eventBus.addListener(this::ModifyDefaultComponentsEvent);
     }
 
+    @SubscribeEvent
     public void ModifyDefaultComponentsEvent(ModifyDefaultComponentsEvent event)
     {
         try
