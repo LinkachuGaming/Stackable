@@ -1,9 +1,8 @@
 package com.lonkachu.stackable.mixin;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import com.lonkachu.stackable.StackableMod;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix3x2fStack;
@@ -14,7 +13,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(GuiGraphics.class)
+@Mixin(GuiGraphicsExtractor.class)
 public class DrawContextFixin
 {
     @Shadow @Final private Matrix3x2fStack pose;
@@ -26,7 +25,7 @@ public class DrawContextFixin
      * ModifyVariable is the best bet for this section as this method just so happens to include a string that is only used if the block text is not overwriten, extremely convienent
      */
 
-    @ModifyVariable(method = "renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
+    @ModifyVariable(method = "itemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private String modifyString(String value, Font textRenderer, ItemStack stack, int x, int y, @Nullable String countOverride)
     {
         int count = stack.getCount();
@@ -56,13 +55,14 @@ public class DrawContextFixin
 
         return 2.5f / s.length();
     }
-    @Redirect(method = "renderItemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;width(Ljava/lang/String;)I"))
+
+    @Redirect(method = "itemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;width(Ljava/lang/String;)I"))
     private int width(Font instance, String s)
     {
         float f = scale(s);
         return (int)(instance.width(s) * f);
     }
-    @Inject(method = "renderItemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)V") )
+    @Inject(method = "itemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;text(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)V") )
     private void width(Font font, ItemStack stack, int x, int y, String text, CallbackInfo ci)
     {
         String s = text == null ? String.valueOf(stack.getCount()) : text;

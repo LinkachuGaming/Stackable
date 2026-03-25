@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Config {
 
     private int maxStack;
+    private int bundleStackPenalty;
 
     private boolean truncateItemCount;
     private ArrayList<StacksizeOverride> StacksizeOverride = new ArrayList<>();
-    public Config(int maxCount) {
+    public Config(int maxCount, int bundleStackPenalty) {
         maxStack = maxCount;
+        this.bundleStackPenalty = bundleStackPenalty;
         truncateItemCount = false;
         StacksizeOverride.add(new StacksizeOverride("minecraft:egg", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:brown_egg", maxCount / 4));
@@ -63,6 +65,10 @@ public class Config {
 
     public int getMaxStackSize() {
         return maxStack;
+    }
+    public int getBundleStackPenalty()
+    {
+        return bundleStackPenalty == 0 ? StackableMod.DEFAULT_BUNDLE_PENALTY : bundleStackPenalty;
     }
     public boolean CanTruncateItemCount()
     {

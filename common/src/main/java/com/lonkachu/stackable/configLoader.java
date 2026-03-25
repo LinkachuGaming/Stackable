@@ -36,7 +36,7 @@ public class configLoader {
         }
         FileWriter writer = new FileWriter("config/Stackable.json");
         //int maxStack = StackableMod.MAX_STACK;
-        Config config = new Config(StackableMod.DEFAULT_STACK);
+        Config config = new Config(StackableMod.DEFAULT_STACK, StackableMod.DEFAULT_BUNDLE_PENALTY);
 
 
         writer.write(gson.toJson(config));
