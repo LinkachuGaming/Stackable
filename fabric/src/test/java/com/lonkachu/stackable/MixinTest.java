@@ -28,35 +28,11 @@ public class MixinTest
         Bootstrap.bootStrap();
 
     }
-//    @GameTest
-//    public void TestDefaultStackSize()
-//    {
-//        ItemStackTemplate diamond = new ItemStackTemplate(Items.DIAMOND);
-//        int stackSize = diamond.getOrDefault(DataComponents.MAX_STACK_SIZE, -1);
-//        Assertions.assertNotEquals(64, stackSize);
-//    }
-//    @GameTest
-//    public void TestVanillaMaxStackSize()
-//    {
-//        ItemStackTemplate diamond = new ItemStackTemplate(Items.DIAMOND);
-//        int stackSize = diamond.getOrDefault(DataComponents.MAX_STACK_SIZE, -1);
-//        Assertions.assertNotEquals(99, stackSize);
-//    }
+
     @Test
     public void TestBundleSize()
     {
         Assertions.assertNotEquals(BundleItem.DEFAULT_MAX_STACK_SIZE, StackableMod.getMaxStackCount());
-    }
-
-    @Test
-    public void TestMerge()
-    {
-        ItemStackTemplate thousandBrick = new ItemStackTemplate(Items.BRICK, 1000);
-        ItemStackTemplate twothousandBrick = new ItemStackTemplate(Items.BRICK, 2000);
-//
-//        ItemStackTemplate item = ItemEntity.merge(thousandBrick., twothousandBrick, 3000);
-//
-//        Assertions.assertEquals(StackableMod.DEFAULT_STACK, item.getCount());
     }
 
     @Test

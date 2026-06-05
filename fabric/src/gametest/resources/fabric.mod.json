@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "stackable-test",
+  "version": "1.0.0",
+  "name": "Stackable mod",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-gametest": ["StacksizeTest"],
+    "fabric-client-gametest": []
+  }
+}
