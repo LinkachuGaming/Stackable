@@ -7,6 +7,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import org.slf4j.Logger;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,6 +22,10 @@ import java.util.List;
  */
 @Mixin(ItemStack.class)
 public abstract class ToolTipMixin {
+    @Shadow
+    @Final
+    private static Logger LOGGER;
+
     /**
      * Adds the full count in item tooltip.
      * @author Devin-Kerman from stacc, updated for 1.21
@@ -30,6 +36,7 @@ public abstract class ToolTipMixin {
             List<Component> texts = cir.getReturnValue();
             texts.add(1, Component.literal(String.valueOf(this.getCount())).withStyle(ChatFormatting.GRAY));
         }
+        LOGGER.debug("GotTooltipLines");
     }
 
     @Shadow

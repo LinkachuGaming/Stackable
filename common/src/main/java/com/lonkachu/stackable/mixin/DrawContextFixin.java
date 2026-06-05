@@ -20,8 +20,7 @@ public class DrawContextFixin
 
     /**
      * author Lonkachu
-     * This code is a band-aid over the rendering issues that come from extending stack sizes above 999 as the text will start to creep onto other parts of the block,
-     * I do want to at some point replace this with auto resizing text, maybe for next rewrite.
+     * This code is a band-aid over the rendering issues that come from extending stack sizes above 999 as the text will start to creep onto other parts of the block
      * ModifyVariable is the best bet for this section as this method just so happens to include a string that is only used if the block text is not overwriten, extremely convienent
      */
 
@@ -56,7 +55,23 @@ public class DrawContextFixin
         return 2.5f / s.length();
     }
 
-    @Redirect(method = "itemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;width(Ljava/lang/String;)I"))
+    @Redirect(method = "itemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;width(Ljava/lang/String;)I"), remap = false)
+    private int width(Font instance, String s)
+    {
+        float f = scale(s);
+        return (int)(instance.width(s) * f);
+    }
+    @Inject(method = "itemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;text(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)V"), remap = false )
+    private void width(Font font, ItemStack stack, int x, int y, String text, CallbackInfo ci)
+    {
+        String s = text == null ? String.valueOf(stack.getCount()) : text;
+        float f = scale(s);
+        this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16);
+        this.pose.scale(f);
+    }
+
+    /*
+        @Redirect(method = "itemCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Font;width(Ljava/lang/String;)I"))
     private int width(Font instance, String s)
     {
         float f = scale(s);
@@ -70,4 +85,5 @@ public class DrawContextFixin
         this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16);
         this.pose.scale(f);
     }
+     */
 }

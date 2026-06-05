@@ -11,7 +11,8 @@
     "ItemEntityMixin",
     "ItemStackFixin",
     "ItemStackTemplateFixin",
-    "ToolTipMixin"
+    "ToolTipMixin",
+    "InventoryStackMixin"
   ],
   "client": [
     "DrawContextFixin"
