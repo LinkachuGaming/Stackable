@@ -54,11 +54,11 @@ jobs:
         with:
           name: Fabric
           path: fabric/build/libs/
-#      - name: Save Forge artifacts
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: Forge
-#          path: forge/build/libs/
+      - name: Save Forge artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Forge
+          path: forge/build/libs/
       - name: Save NeoForge artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -112,30 +112,30 @@ jobs:
 
           changelog-file: CHANGELOG.md
 
-#      - name: Publish Forge
-#        uses: Kir-Antipov/mc-publish@v3.3
-#        with:
-#          #Modrinth + Curse
-#          modrinth-id: Bc74RbD1
-#          curseforge-id: 857801
-#          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-#          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-#
-#          name: "[LegacyForge] Stackable ${{ steps.mc_version.outputs.value }}+${{ steps.version.outputs.value }}"
-#
-#          loaders: |
-#            forge
-#
-#          files: |
-#            forge/build/libs/Stackable-forge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
-#
-#          game-versions: |
-#            [${{ steps.mc_version.outputs.value }},)
-#
-#          dependencies:
-#            fabric@${{ steps.fabric_version }}(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
-#
-#          changelog-file: CHANGELOG.md
+      - name: Publish Forge
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          #Modrinth + Curse
+          modrinth-id: Bc74RbD1
+          curseforge-id: 857801
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          name: "[LegacyForge] Stackable ${{ steps.mc_version.outputs.value }}+${{ steps.version.outputs.value }}"
+
+          loaders: |
+            forge
+
+          files: |
+            forge/build/libs/Stackable-forge-${{ steps.mc_version.outputs.value }}-${{ steps.version.outputs.value }}.jar
+
+          game-versions: |
+            [${{ steps.mc_version.outputs.value }},)
+
+          dependencies:
+            fabric@${{ steps.fabric_version }}(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
+
+          changelog-file: CHANGELOG.md
 
       - name: Publish Github
         uses: Kir-Antipov/mc-publish@v3.3
