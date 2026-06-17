@@ -7,21 +7,15 @@ This mixin class exists to unpatch another codec that was changed to be limited 
  */
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.lonkachu.stackable.StackableMod;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-/*
-@ItemStackFixin
-Author: Lonk
-This mixin class exists to unpatch a crash that occurs if a block stack is above 99, I'm not quite sure why mojang added this
-tbh, it doesn't massively impact how people
- */
-
 @Mixin(ItemStack.class)
-public class ItemStackFixin {
+public class ItemStackTemplateFixin {
     //1.2.2 - This is a lot cleaner and less crash prone. This was done to fix an issue with kubeJS, it might be worth making a PR for them since this should achieve the same effect and prevent other mods from crashing.
     @ModifyExpressionValue
             (

@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.lonkachu.stackable.StackableMod;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemInstance;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.BundleContents;
 import org.apache.commons.lang3.math.Fraction;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +22,7 @@ public class BundleContentsMixin
 {
     @ModifyExpressionValue(method = "getWeight",
     at = @At(value = "INVOKE", target = "Lorg/apache/commons/lang3/math/Fraction;getFraction(II)Lorg/apache/commons/lang3/math/Fraction;"))
-    private static Fraction GetFraction(Fraction original, @Local(ordinal = 0, argsOnly = true) ItemInstance item)
+    private static Fraction GetFraction(Fraction original, @Local(ordinal = 0, argsOnly = true) ItemStack item)
     {
         return StackableMod.GetConfig().getMaxStackSize() == item.getMaxStackSize() ?
                 Fraction.getFraction(StackableMod.GetConfig().getBundleStackPenalty(), item.getMaxStackSize()) :

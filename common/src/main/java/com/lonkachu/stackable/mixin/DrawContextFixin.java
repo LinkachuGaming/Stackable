@@ -67,7 +67,7 @@ public class DrawContextFixin
     {
         String s = text == null ? String.valueOf(stack.getCount()) : text;
         float f = scale(s);
-        this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16);
-        this.pose.scale(f);
+        this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16, 0);
+        this.pose.scale(f,f,f);
     }
 }

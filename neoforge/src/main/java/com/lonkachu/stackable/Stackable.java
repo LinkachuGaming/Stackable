@@ -31,8 +31,8 @@ public class Stackable {
         {
             //TODO: This function is deprecated
             event.modifyMatching(
-                    (item, components)  -> !item.isDamageable(item.getDefaultInstance()) && item.getDefaultMaxStackSize() == 64, //Basically, we want to ignore any damagable item, and also ensure the object has the default stack size.
-                    (patch) -> patch.set(DataComponents.MAX_STACK_SIZE, StackableMod.getMaxStackCount())
+                    item -> !item.isDamageable(item.getDefaultInstance()) && item.getDefaultMaxStackSize() == 64, //Basically, we want to ignore any damagable item, and also ensure the object has the default stack size.
+                    builder -> builder.set(DataComponents.MAX_STACK_SIZE, StackableMod.getMaxStackCount())
             );
         } catch (IllegalStateException e){
             throw new RuntimeException(e);

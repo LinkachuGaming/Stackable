@@ -48,4 +48,4 @@ rootProject.name = 'Stackable'
 include('common')
 include('fabric')
 include('neoforge')
-//include('forge') TODO: Re-enable forge when it gets ported
+include('forge')

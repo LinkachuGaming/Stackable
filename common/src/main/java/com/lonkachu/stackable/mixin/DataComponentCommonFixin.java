@@ -20,9 +20,14 @@ public class DataComponentCommonFixin {
         return StackableMod.getMaxStackCount();
     }
 
+    @SuppressWarnings("UnresolvedMixinReference") //Obviously one of these mixins will be unresolved, as we are specifying both Mojmaps and Fabric intermediary
     @ModifyExpressionValue(
-            method = "lambda$static$1(Lnet/minecraft/core/component/DataComponentType$Builder;)Lnet/minecraft/core/component/DataComponentType$Builder;",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/util/ExtraCodecs;intRange(II)Lcom/mojang/serialization/Codec;")
+            method = {
+                    "lambda$static$1(Lnet/minecraft/core/component/DataComponentType$Builder;)Lnet/minecraft/core/component/DataComponentType$Builder;",
+                    "method_58570"
+            },
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/util/ExtraCodecs;intRange(II)Lcom/mojang/serialization/Codec;"),
+            require = 1
     )
     private static Codec<Integer> replaceCodec(Codec<Integer> original)
     {
