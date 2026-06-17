@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.inventory.ContainerInput;
 import net.minecraft.world.inventory.Slot;
@@ -72,7 +73,7 @@ public class StacksizeTest implements CustomTestMethodInvoker {
         context.getLevel().addFreshEntity(ie2);
 
         context.succeedWhen(() ->{
-            var itemsInArea = context.getEntities(EntityType.ITEM, spawnPoint, 2);
+            var itemsInArea = context.getEntities(EntityTypes.ITEM, spawnPoint, 2);
 
             if (itemsInArea.size() == 1)
             {
