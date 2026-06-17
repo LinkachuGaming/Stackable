@@ -22,8 +22,7 @@ public class DrawContextFixin
 
     /**
      * author Lonkachu
-     * This code is a band-aid over the rendering issues that come from extending stack sizes above 999 as the text will start to creep onto other parts of the block,
-     * I do want to at some point replace this with auto resizing text, maybe for next rewrite.
+     * This code is a band-aid over the rendering issues that come from extending stack sizes above 999 as the text will start to creep onto other parts of the block
      * ModifyVariable is the best bet for this section as this method just so happens to include a string that is only used if the block text is not overwriten, extremely convienent
      */
 
@@ -68,8 +67,7 @@ public class DrawContextFixin
     {
         String s = text == null ? String.valueOf(stack.getCount()) : text;
         float f = scale(s);
-        this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16, 0);
-        //this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16,0);
-        this.pose.scale(f, f, f);
+        this.pose.translate(x * (1 - f), y * (1 - f) + (1 - f) * 16);
+        this.pose.scale(f);
     }
 }

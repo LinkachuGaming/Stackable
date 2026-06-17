@@ -1,5 +1,5 @@
-# Stackable 2.0.4!
+# Stackable 2.1.1!
 
-A quick hotfix for 2.0.3, mostly solving some compatibility issues.
+a port to 26.2!
 
-+ A fix for forge crashing on Startup.
++ Simple version bump to 26.2, no major code changes.

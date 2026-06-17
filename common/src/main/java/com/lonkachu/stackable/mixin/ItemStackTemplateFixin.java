@@ -1,6 +1,11 @@
 package com.lonkachu.stackable.mixin;
 
-import com.lonkachu.stackable.StackableMod;
+/*
+@ItemStackTemplateFixin
+Author: Lonk
+This mixin class exists to unpatch another codec that was changed to be limited to 99 in 26.1
+ */
+
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.ExtraCodecs;

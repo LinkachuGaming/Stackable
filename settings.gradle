@@ -44,8 +44,8 @@ plugins {
 }
 
 // This should match the folder name of the project, or else IDEA may complain (see https://youtrack.jetbrains.com/issue/IDEA-317606)
-rootProject.name = 'MultiLoader-Template'
+rootProject.name = 'Stackable'
 include('common')
 include('fabric')
 include('neoforge')
-include('forge')
+//include('forge') TODO: Re-enable forge when it gets ported

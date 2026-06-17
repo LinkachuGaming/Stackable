@@ -1,6 +1,6 @@
 package com.lonkachu.stackable;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 public class StacksizeOverride {
     private String namespaceID;
     private int value;
@@ -11,9 +11,9 @@ public class StacksizeOverride {
     }
 
 
-    public ResourceLocation GetIdentifier()
+    public Identifier GetIdentifier()
     {
-        return ResourceLocation.bySeparator(namespaceID, ':');
+        return Identifier.bySeparator(namespaceID, ':');
     }
     public int GetCount() { return value; }
 }

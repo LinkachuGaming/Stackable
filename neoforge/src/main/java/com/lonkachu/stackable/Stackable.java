@@ -5,6 +5,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 
@@ -20,19 +21,18 @@ public class Stackable {
         // project.
 
         // Use NeoForge to bootstrap the Common mod.
-        Constants.LOG.info("Hello NeoForge world!");
         StackableMod.init();
-
-        eventBus.addListener(this::ModifyDefaultComponentsEvent);
     }
 
+    @SubscribeEvent
     public void ModifyDefaultComponentsEvent(ModifyDefaultComponentsEvent event)
     {
         try
         {
+            //TODO: This function is deprecated
             event.modifyMatching(
-                    item -> !item.isDamageable(item.getDefaultInstance()) && item.getDefaultMaxStackSize() == 64, //Basically, we want to ignore any damagable item, and also ensure the object has the default stack size.
-                    builder -> builder.set(DataComponents.MAX_STACK_SIZE, StackableMod.getMaxStackCount())
+                    (item, components)  -> !item.isDamageable(item.getDefaultInstance()) && item.getDefaultMaxStackSize() == 64, //Basically, we want to ignore any damagable item, and also ensure the object has the default stack size.
+                    (patch) -> patch.set(DataComponents.MAX_STACK_SIZE, StackableMod.getMaxStackCount())
             );
         } catch (IllegalStateException e){
             throw new RuntimeException(e);

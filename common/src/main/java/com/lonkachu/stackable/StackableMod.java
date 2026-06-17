@@ -16,6 +16,7 @@ public class StackableMod {
 
     public static final int MAX_STACK = 2147483647;
     public static final int DEFAULT_STACK = 1024;
+    public static final int DEFAULT_BUNDLE_PENALTY = 8; //One item will have the weight of 8 when used in a bundle.
 
     public static final String[] SUFFIXES = { "", "K", "M", "B" };
 

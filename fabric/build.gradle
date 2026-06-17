@@ -1,15 +1,15 @@
 plugins {
     id 'multiloader-loader'
-    id 'fabric-loom'
+    id 'net.fabricmc.fabric-loom'
 }
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings loom.layered {
+/*    mappings loom.layered {
         officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
-    }
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+        //parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
+    }*/
+    implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     testImplementation "net.fabricmc:fabric-loader-junit:${fabric_loader_version}"
 }
 
@@ -37,6 +37,18 @@ loom {
             setConfigName('Fabric Server')
             ideConfigGenerated(true)
             runDir('runs/server')
+        }
+    }
+
+    fabricApi {
+        configureTests {
+            println "ConfiguringTestings"
+            createSourceSet = true
+            modId = "test-${project.name}"
+            enableGameTests = true // Default is true
+            enableClientGameTests = true // Default is true
+            eula = true // By setting this to true, you agree to the Minecraft EULA.
+            clearRunDirectory = true
         }
     }
 }

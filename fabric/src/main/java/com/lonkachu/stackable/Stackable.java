@@ -21,7 +21,6 @@ public class Stackable implements ModInitializer {
         // project.
 
         // Use Fabric to bootstrap the Common mod.
-        Constants.LOG.info("Hello Fabric world!");
         StackableMod.init();
 
         for(StacksizeOverride override : StackableMod.GetConfig().GetOverrides()) {

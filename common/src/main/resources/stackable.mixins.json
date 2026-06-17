@@ -5,11 +5,14 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
   "mixins": [
+    "BundleContentsMixin",
     "DataComponentCommonFixin",
-    "DataComponentFixin",
+    "ItemCommandsFixin",
     "ItemEntityMixin",
     "ItemStackFixin",
-    "ToolTipMixin"
+    "ItemStackTemplateFixin",
+    "ToolTipMixin",
+    "InventoryStackMixin"
   ],
   "client": [
     "DrawContextFixin",
