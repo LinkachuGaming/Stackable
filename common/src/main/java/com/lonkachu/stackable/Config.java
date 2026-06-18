@@ -14,11 +14,8 @@ public class Config {
         this.bundleStackPenalty = bundleStackPenalty;
         truncateItemCount = false;
         StacksizeOverride.add(new StacksizeOverride("minecraft:egg", maxCount / 4));
-        StacksizeOverride.add(new StacksizeOverride("minecraft:brown_egg", maxCount / 4));
-        StacksizeOverride.add(new StacksizeOverride("minecraft:blue_egg", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:snowball", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:oak_sign", maxCount / 4));
-        StacksizeOverride.add(new StacksizeOverride("minecraft:pale_oak_sign", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:spruce_sign", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:birch_sign", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:jungle_sign", maxCount / 4));
@@ -30,7 +27,6 @@ public class Config {
         StacksizeOverride.add(new StacksizeOverride("minecraft:cherry_sign", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:bamboo_sign", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:oak_hanging_sign", maxCount / 4));
-        StacksizeOverride.add(new StacksizeOverride("minecraft:pale_oak_hanging_sign", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:spruce_hanging_sign", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:birch_hanging_sign", maxCount / 4));
         StacksizeOverride.add(new StacksizeOverride("minecraft:jungle_hanging_sign", maxCount / 4));
