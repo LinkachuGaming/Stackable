@@ -20,8 +20,8 @@ neoForge {
 dependencies {
     compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
     // fabric and neoforge both bundle mixinextras, so it is safe to use it in common
-    compileOnly group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
-    // annotationProcessor group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
+    compileOnly group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.5.4'
+    annotationProcessor group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.5.4'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.0' // Use the latest version
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.0' // Use the latest version
